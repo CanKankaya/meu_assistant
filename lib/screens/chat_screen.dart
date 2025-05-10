@@ -250,6 +250,30 @@ class ChatScreen extends StatelessWidget {
                               chatController.addMessage(message, true);
                               _controller.clear();
                             }
+
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  title: Text('Warning'),
+                                  content: Text('Are you sure?'),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: Text('Cancel'),
+                                    ),
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.pushNamed(context, '/other-screen');
+                                      },
+                                      child: Text('Send'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
                           },
                   ),
                 ],

@@ -181,6 +181,9 @@ class MapService extends GetxController {
             result.points.map((point) => LatLng(point.latitude, point.longitude)).toList();
         result.points.map((point) => LatLng(point.latitude, point.longitude)).toList();
 
+        // Make the ring routes invisible
+        toggleRingRoute();
+
         // Make other markers invisible
         _markersVisible.value = false;
         _markers = _markers.map((marker) {
@@ -243,6 +246,10 @@ class MapService extends GetxController {
     _markers = _markers.map((marker) {
       return marker.copyWith(visibleParam: true);
     }).toSet();
+
+    if (!_staticRouteVisible.value) {
+      toggleRingRoute();
+    }
   }
 
   Future<void> setCameraToRoute() async {

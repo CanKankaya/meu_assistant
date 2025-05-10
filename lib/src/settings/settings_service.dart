@@ -9,7 +9,7 @@ class SettingsService {
   /// Loads the User's preferred ThemeMode from local storage.
   Future<ThemeMode> themeMode() async {
     final prefs = await SharedPreferences.getInstance();
-    final themeModeIndex = prefs.getInt(themeModeKey) ?? ThemeMode.system.index;
+    final themeModeIndex = prefs.getInt(themeModeKey) ?? 0;
     return ThemeMode.values[themeModeIndex];
   }
 
